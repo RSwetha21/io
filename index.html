@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Every Second Without You</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffe6ee, #fff5f8);
+      color: #333;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+    .timer {
+      font-size: 2rem;
+      line-height: 1.8;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      margin-bottom: 40px;
+    }
+    .message {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      background: rgba(255,255,255,0.8);
+      padding: 25px;
+      border-radius: 20px;
+    }
+    button {
+      margin-top: 30px;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      background: #ff7aa2;
+      color: white;
+    }
+    button:hover { opacity: 0.9; }
+      .hearts { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+    .heart { position: absolute; bottom: -20px; font-size: 20px; animation: floatUp 8s linear infinite; opacity: 0.6; }
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 0.7; }
+      to { transform: translateY(-110vh); opacity: 0; }
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 40px 0;
+    }
+    .photo-box {
+      background: white;
+      border-radius: 18px;
+      padding: 30px 15px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      font-size: 1rem;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 0;
+      }
+      .container {
+        padding: 24px 16px;
+      }
+      h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+      }
+      .subtitle {
+        font-size: 1rem;
+        margin-bottom: 24px;
+      }
+      .timer {
+        font-size: 1.4rem;
+        padding: 20px;
+        border-radius: 16px;
+      }
+      .message {
+        font-size: 1rem;
+        padding: 18px;
+        line-height: 1.6;
+      }
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 24px 0;
+      }
+      .photo-box {
+        padding: 20px 12px;
+        font-size: 0.95rem;
+      }
+      button {
+        width: 100%;
+        padding: 14px;
+        font-size: 1rem;
+      }
+      .heart {
+        font-size: 16px;
+      }
+    }
+</style>
+</head>
+<body>
+  <div class="hearts" id="hearts"></div>
+  <div class="container">
+    <h1>Every Second Without You ❤️</h1>
+    <p class="subtitle">Distance keeps us apart, but never away from my heart.</p>
+
+    <div class="timer" id="timer"></div>
+
+    <div class="gallery">
+      <div class="photo-box">📸 Our favorite memory together</div>
+      <div class="photo-box">💕 The last hug I still replay</div>
+      <div class="photo-box">💌 Waiting for our next meeting</div>
+    </div>
+
+    <div class="message">
+      Every second without you feels longer, but every second also reminds me how deeply I love you.<br>
+      I’m waiting for the day this timer finally stops and I can hold you again. 💕
+    </div>
+
+    <button onclick="showMessage()">Click if you miss me too 💌</button>
+  </div>
+
+  <script>
+    const startDate = new Date();
+    startDate.setDate(startDate.getDate() - 247);
+
+    function updateTimer() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor(diff / (1000 * 60));
+      const seconds = Math.floor(diff / 1000);
+
+      document.getElementById('timer').innerHTML = `
+        <strong>${days}</strong> Days<br>
+        <strong>${hours}</strong> Hours<br>
+        <strong>${minutes}</strong> Minutes<br>
+        <strong>${seconds}</strong> Seconds<br>
+        I missed you NAVEEN 💖
+      `;
+    }
+
+    function showMessage() {
+      alert('Come back soon... I MISS YOU ❤️');
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+      function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (5 + Math.random() * 4) + 's';
+      document.getElementById('hearts').appendChild(heart);
+      setTimeout(() => heart.remove(), 9000);
+    }
+
+    setInterval(createHeart, 800);
+  </script>
+</body>
+</html>
